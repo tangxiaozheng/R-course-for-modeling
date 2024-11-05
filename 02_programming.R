@@ -126,7 +126,11 @@ temp_mixed <- c(35.82, 36.67, 98.04, 37.32, 98.8, 36.11, 37.28, 36.49, 35.62,
                 97.81, 38.2, 36.2, 36.85, 36.61, 99.48, 99.66, 97.3, 99.23, 
                 36.52, 98.74, 37.09)
 # write a loop that will translate all Fahrenheit to Celsius
-
+for (i in 1:length(temp_mixed))
+{
+  if (temp_mixed[i]>=40)
+    temp_mixed[i] <- (temp_mixed[i]-32)/1.8
+}
 
 ### Functions
 #a function allows you to store a bit of code for reuse
