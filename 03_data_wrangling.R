@@ -78,7 +78,10 @@ strep_tb %>%
 # improvement (radiologic_6m), use group_by() and summarize() to get the number 
 # of patients that got a "6_Considerable_improvement" for each 
 # baseline_condition. This can also be done using the base R function table()
-
+strep_tb %>% 
+  group_by(baseline_condition) %>% 
+  summarize(n_improved = sum (radiologic_6m == "6_Considerable_improvement")) %>% 
+  ungroup()
 #eventually we would (also) want show a plot! (see 04_visualization.R)
 
 ## Joining data
@@ -126,11 +129,14 @@ crp_long <- crp_data %>%
 # the day column is still not perfect, change it to have only the numeric value 
 # of the day, and not day_crp written in front of each value. Secondly, remove 
 # rows that contain NA values for crp.
+crp_long$day <- crp_long$day %>% substring(8)
+crp_long<- crp_long %>% filter(!is.na(crp))
 
 #Exercise: pivot_wider
 # can we go back to the wide format? check out the function pivot_wider
 ?pivot_wider
 
+crp_wider <- crp_long %>% pivot_wider(names_from = day,values_from = crp)
 
 ## Advanced practice: Data wrangling and basic programming
 #lets dive into a detailed example on the temperature in the data

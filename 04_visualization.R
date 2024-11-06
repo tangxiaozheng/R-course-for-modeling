@@ -59,8 +59,8 @@ licorice_gargle %>%
 strep_tb %>% 
   ggplot(aes(x = strep_resistance, fill = improved)) +
   geom_bar() +
-  facet_wrap(~ arm) +
-  scale_fill_manual(values = c( "#3ABAC1", "#C37121")) +
+  scale_fill_manual(values = c( "#3ABAC1", "#C37121"))+
+  facet_wrap("arm") +
   theme_bw()
 
 #you can change options within specific plots
@@ -82,6 +82,11 @@ pdf(file = "results/figures/strep_barplot.pdf", width = 6, height = 5)
 print(strep_barplot)
 dev.off()
 
+
+ggsave(file = "results/figures/strep_barplot.png",,width = 6,
+       height = 5, dpi=300)
+print(strep_barplot)
+dev.off()
 # Exercise: create a png file
 #use the function png() to create a png file, similar to how we created the pdf,
 #play around with the width, height and res (resolution)

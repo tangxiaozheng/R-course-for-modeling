@@ -132,6 +132,16 @@ for (i in 1:length(temp_mixed))
     temp_mixed[i] <- (temp_mixed[i]-32)/1.8
 }
 
+i<-1
+while (i <= length(temp_mixed))
+{
+  if (temp_mixed[i]>=40)
+  { print (i)
+    temp_mixed[i] <- (temp_mixed[i]-32)/1.8
+  }
+  i <- i + 1 
+}
+
 ### Functions
 #a function allows you to store a bit of code for reuse
 convert_to_celsius <- function(fahr) {
