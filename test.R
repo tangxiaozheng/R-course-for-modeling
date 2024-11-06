@@ -12,16 +12,16 @@ mod1 <- function() {
   
   ini({
     # central 
-      KA   =  c(0.1,0,1)     #[0.1-1]
-      CL   =  c(1,0,10)      #[1-10] 
-      V2   =  c(10,0,50)      #[10-50]
+      KA   =  c(0.1,0.8,1)     #[0.1-1]
+      CL   =  c(1,1,10)      #[1-10] 
+      V2   =  c(10,25,50)      #[10-50]
       # peripheral
-      Q    =  c(1,0,10)     #[1-10]
-      V3   =  c(50,0,500)     #[50-500]
+      Q    =  c(1,3,10)     #[1-10]
+      V3   =  c(50,50,500)     #[50-500]
       # effects
-      Kin  =   c(0.5,0,2)    #[0.5-2]
-      Kout =   c(0.5,0,2)   #[0.5-2]
-      EC50 =   0    #[] -> depends on your PK!
+      Kin  =   c(0.5,1,2)    #[0.5-2]
+      Kout =   c(0.5,1,2)   #[0.5-2]
+      EC50 =   0.8    #[] -> depends on your PK!
   })
   
   #model defines the structure and start values (initalization) of the compartments (0 if undefined)
@@ -71,6 +71,7 @@ ev  <-  et( #first defined doses
 df_output <- mod1 %>% rxSolve(ev)
 
 # Now plot your outpout using ggplot 
-
-df_output %>% 
-  ggplot()
+df_output %>% ggplot(aes(x = time,y = C)) + geom_line()
+df_output %>% ggplot(aes(x = time,y = eff)) + geom_line()
+#df_output %>% 
+ # ggplot()
