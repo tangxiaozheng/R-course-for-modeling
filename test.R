@@ -1,7 +1,7 @@
 # model 1 PK-PD #
 # 2 compartments # 
 # Kin Kout PD #
-
+#Tang Gonghou Umi.Tang@hotmail.com#
 library(rxode2)
 library(tidyverse)
 
@@ -12,7 +12,7 @@ mod1 <- function() {
   
   ini({
     # central 
-      KA   =  c(0.1,0.8,1)     #[0.1-1]
+      KA   =  c(,0.8,)     #[0.1-1]
       CL   =  c(1,1,10)      #[1-10] 
       V2   =  c(10,25,50)      #[10-50]
       # peripheral
